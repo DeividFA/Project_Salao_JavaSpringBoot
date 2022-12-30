@@ -1,0 +1,281 @@
+<html>
+<head th:replace="~{base :: head}">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" type="text/css" href="css/pessoas.css">
+</head>
+<body>
+	<div th:replace="~{base :: logo}"></div>
+
+	<h2 class="titulo-principal">Cadastro de Pessoas</h2>
+
+	<form th:object="${cadastroDePessoasForm}" class="card-body"
+		th:action="@{pessoas}" method="POST">
+		<div class="container card mt-3">
+			<div class="container mt-3">
+				<div id="pessoa" class="row">
+					<div class="form-check col-sm-2 col-md-2">
+						<input class="form-check-input" type="checkbox" value=""
+							th:field="*{cliente}" th:errorClass="is-invalid"> <label
+							class="form-check-label" for="flexCheckDefault"> Cliente
+						</label>
+					<div class="invalid-feedback" th:errors="*{cliente}">Selecione
+						um tipo</div>
+					</div>
+					<div class="form-check col-sm-2 col-md-2">
+						<input class="form-check-input" type="checkbox" value=""
+							th:field="*{funcionario}" th:errorClass="is-invalid"> <label
+							class="form-check-label" for="flexCheckDefault">
+							Funcionario </label>
+					<div class="invalid-feedback" th:errors="*{funcionario}">Selecione
+						um tipo</div>
+					</div>
+					<div class="form-check col-sm-2 col-md-2">
+						<input class="form-check-input" type="checkbox" value=""
+							th:field="*{fornecedor}" th:errorClass="is-invalid"> <label
+							class="form-check-label" for="flexCheckDefault">
+							Fornecedor</label>
+					<div class="invalid-feedback" th:errors="*{fornecedor}">Selecione
+						um tipo</div>
+					</div>
+
+				</div>
+			</div>
+
+			<div>
+				<div class="row">
+
+					<div class="col-sm-1 col-md-1">
+						<div>
+							<label class="control-label">Código:</label> <input type="text"
+								class="form-control"> <i> </i>
+						</div>
+					</div>
+
+
+
+					<div class=" col-sm-6 col-md-6">
+						<div>
+							<label for="nomePessoa" class="control-label">Nome: <h11>*</h11></label>
+							<input th:field="*{nomePessoa}" th:errorClass="is-invalid"
+								class="form-control" placeholder="Informe qual o nome da Pessoa">
+							<div class="invalid-feedback" th:errors="*{nomePessoa}">Erros
+								do nome da Pessoa</div>
+							<i></i>
+
+						</div>
+					</div>
+					<div class="col-sm-1 col-md-1 lefth mt-4">
+						<div>
+
+							<button class="btn btn-primary" type="button">Buscar</button>
+
+
+						</div>
+					</div>
+				</div>
+				<div class="row">
+
+
+					<!-- Prepended text-->
+					<div class="form-group col-sm-2 mt-3 ">
+						<label class=" control-label" for="prependedtext">Telefone
+							<h11>*</h11>
+						</label>
+						<div>
+							<div class="input-group">
+								<span class="input-group-addon"><i
+									class="glyphicon glyphicon-earphone"></i></span> <input
+									th:field="*{telefone}" class="form-control"
+									th:errorClass="is-invalid" placeholder="XX XXXXX-XXXX"
+									type="text" maxlength="13"
+									pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
+									OnKeyPress="formatar('## #####-####', this)">
+								<div class="invalid-feedback" th:errors="*{telefone}">Telefone
+									invalido</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="form-group col-sm-5 col-md-5 mt-3">
+						<label for="prependedtext">Email </label>
+						<div>
+							<div class="input-group">
+								<span class="input-group-addon"><i
+									class="glyphicon glyphicon-envelope"></i></span> <input
+									th:field="*{email}" th:errorClass="is-invalid"
+									class="form-control" placeholder="email@email.com" type="text"
+									pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+								<div class="invalid-feedback" th:errors="*{email}">Email
+									invalido</div>
+							</div>
+							<i></i>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-2 mt-3">
+						<label class="control-label" for="Nome">Nascimento<h11>*</h11></label>
+						<div>
+							<input th:field="*{dtNasc}" th:errorClass="is-invalid"
+								placeholder="DD/MM/AAAA" class="form-control input-md"
+								type="text" maxlength="10"
+								OnKeyPress="formatar('##/##/####', this)" onBlur="showhide()">
+							<div class="invalid-feedback" th:errors="*{dtNasc}">Data
+								invalida</div>
+						</div>
+					</div>
+
+					<!-- Select Basic -->
+					<div class="form-group col-md-3 mt-3">
+						<label th:for="estadoCivil" class=" control-label">Estado
+							Civil <h11>*</h11></label>
+						<div>
+							<select id="estadoCivil" th:field="*{estadoCivil}"
+								class="form-control" th:errorClass="is-invalid">
+								<option value=""></option>
+								<option
+									th:each="estadoCivil :  ${T(br.com.salao.bellafashion.model.padroes.EstadoCivil).values()}"
+									th:text="${estadoCivil.getStatus()}" th:value="${estadoCivil}">
+								</option>
+							</select>
+							<div class="invalid-feedback" th:errors="*{estadoCivil}">Selecione
+								um tipo</div>
+						</div>
+					</div>
+
+					<!-- Multiple Radios (inline) -->
+
+					<div class="form-group col-md-4 mt-4">
+						<label class=" control-label" for="radios">Sexo </label>
+						<div>
+							<label required="" class="radio-inline" for="radios-0"> <input
+								th:field="*{sexo}" th:errorClass="is-invalid" value="F"
+								type="radio" required> Feminino
+							</label> <label class="radio-inline" for="radios-1"> <input
+								th:field="*{sexo}" th:errorClass="is-invalid" value="M"
+								type="radio"> Masculino
+							</label>
+							<div class="invalid-feedback" th:errors="*{sexo}">Selecione
+								o Sexo</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row mt-3">
+					<!-- Inicio - Endereço -->
+
+					<div class="row">
+						<label class="control-label" for="CEP">CEP </label>
+						<div class=" col-sm-2 col-md-2">
+							<input th:field="*{cep}" th:errorClass="is-invalid"
+								placeholder="Apenas números" class="form-control input-md "
+								value="" type="search" maxlength="9" pattern="[0-9,-]+$"
+								OnKeyPress="formatar('#####-####', this)" />
+							<div class="invalid-feedback" th:errors="*{cep}">Informe um
+								Cep Valido</div>
+						</div>
+						<div class=" col-sm-3 col-md-3 lefth">
+							<button type="button" class="btn btn-primary"
+								onclick="pesquisacep(cep.value)">Pesquisar</button>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class=" col-sm-6 col-md-6">
+							<div>
+								<label class="control-label">Endereço:</label> <input
+									th:field="*{rua}" type="text" th:errorClass="is-invalid"
+									class="form-control"> <i></i>
+								<div class="invalid-feedback" th:errors="*{rua}">Digite o
+									nome da rua</div>
+							</div>
+						</div>
+						<div class="col-sm-2 col-md-2">
+							<div>
+								<span class="input-group-addon">Nº </span> <input
+									th:field="*{numero}" class="form-control"
+									th:errorClass="is-invalid" placeholder="" type="text">
+								<div class="invalid-feedback" th:errors="*{numero}">Informe
+									o numero</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-sm-3 col-md-3">
+							<div>
+								<span class="input-group-addon">Bairro</span> <input
+									th:field="*{bairro}" class="form-control"
+									th:errorClass="is-invalid" placeholder="" type="text">
+								<div class="invalid-feedback" th:errors="*{bairro}">Informe
+									o Bairro</div>
+							</div>
+
+						</div>
+
+
+						<div class="col-sm-3 col-md-3">
+							<div>
+								<span class="input-group-addon">Cidade</span> <input
+									th:field="*{cidade}" class="form-control"
+									th:errorClass="is-invalid" placeholder="" type="text">
+								<div class="invalid-feedback" th:errors="*{cidade}">Informe
+									a cidade</div>
+							</div>
+
+						</div>
+
+						<div class="col-sm-2 col-md-2">
+							<div>
+								<span class="input-group-addon">Estado</span> <input
+									th:field="*{estado}" maxlength="2" class="form-control"
+									th:errorClass="is-invalid" placeholder="UF" type="text">
+								<div class="invalid-feedback" th:errors="*{estado}">Informe
+									o estado</div>
+							</div>
+						</div>
+					</div>
+					<!-- Fim - Endereço -->
+				</div>
+			</div>
+
+			<div>
+				<div class="col-sm-8 col-md-8">
+					<label for="exampleFormControlTextarea1">Observação</label>
+					<textarea th:field="*{Observacao}" class="form-control"
+						th:errorClass="is-invalid" rows="8"></textarea>
+					<div class="invalid-feedback" th:errors="*{observacao}">Observação
+						invalida</div>
+				</div>
+			</div>
+
+
+			<!-- Button (Double) -->
+			<div class="form-group mt-3">
+				<label class="col-md-2 control-label" for="Cadastrar"></label>
+				<div class="col-md-8">
+					<button id="Cadastrar" name="Cadastrar" class="btn btn-success"
+						type="Submit">Cadastrar</button>
+					<button id="Cancelar" name="Cancelar" class="btn btn-danger"
+						type="Reset">Cancelar</button>
+				</div>
+			</div>
+			<br>
+
+
+
+		</div>
+
+	</form>
+
+	<br>
+
+	<footer>
+		<div th:replace="~{base :: rodape}"></div>
+
+	</footer>
+
+
+</body>
+</html>

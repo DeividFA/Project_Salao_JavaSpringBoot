@@ -1,0 +1,147 @@
+<html>
+<head th:replace="~{base :: head}">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" type="text/css" href="css/pessoas.css">
+</head>
+<body>
+	<div th:replace="~{base :: logo}"></div>
+
+	<h2 class="titulo-principal">Lançamento de Vales de Funcionários</h2>
+
+	<form action="">
+		<div class="container col-sm-6 col-md-6 card mt-3">
+
+			<div class="container">
+
+				<div class="row">
+
+					<div class="row">
+						<div class="col-sm-4 col-md-4">
+							<div>
+								<label class="control-label">Funcionario</label> <select
+									class="form-select form-control">
+									<option selected>Funcionario</option>
+									<option value="1">Funcionario 1</option>
+									<option value="2">Funcionario 2</option>
+									<option value="3">Funcionario 3</option>
+								</select>
+							</div>
+						</div>
+						<div class=" col-sm-3 col-md-3 lefth">
+							<div>
+								<label class="control-label">Valor:</label> <input type="text"
+									class="form-control"> <i></i>
+
+							</div>
+						</div>
+
+
+					</div>
+
+				</div>
+
+
+
+
+				<!-- Button (Double) -->
+				<div class="form-group mt-3">
+					<label class="col-md-3 control-label" for="Cadastrar"></label>
+					<div class="col-md-8">
+						<button id="Cadastrar" name="Cadastrar" class="btn btn-success"
+							type="Submit">Inserir</button>
+						<button id="Cancelar" name="Cancelar" class="btn btn-danger"
+							type="Reset">Cancelar</button>
+					</div>
+				</div>
+				<br>
+
+
+
+			</div>
+
+
+		</div>
+
+
+		<div class="container col-sm-6 col-md-6 mt-3 left">
+
+			<table class="table table-bordered border-primary table-hover">
+
+				<thead>
+					<tr>
+						<th colspan="2">Colaborador:</th>
+						<div class="row align-items-center">
+							<div class="col">
+								<th class="text-center" colspan="3">Funcionario xxxxx</th>
+							</div>
+						</div>
+					</tr>
+					<tr>
+						<th scope="col">Nº</th>
+						<th scope="col">Data</th>
+						<th scope="col">Valor</th>
+						<th scope="col">Status</th>
+
+						<th scope="col">Opções</th>
+
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr>
+						<th scope="row col-sm-1 col-md-1">1</th>
+						<td>07/07/2021</td>
+
+						<td>R$ 16,00</td>
+						<td>Aberto</td>
+
+						<td>
+							<div class="container">
+								<a> <i class=""><button title="Alterar"
+											class="btn btn-sm btn-warning btn-xs mb-1 mt-1">Alterar</button></i>
+								</a> <a> <i><button title="Excluir"
+											class="btn btn-sm btn-danger btn-xs  mb-1 mt-1">Excluir</button>
+								</i></a>
+							</div>
+						</td>
+					</tr>
+
+
+
+
+				</tbody>
+				<thead>
+					<tr>
+
+						<th colspan="2">Nº total de Vales</th>
+						<th colspan="1">1</th>
+
+						<th colspan="1">Valor total:</th>
+						<th colspan="1">R$ 16,00</th>
+
+
+
+					</tr>
+				</thead>
+
+			</table>
+
+
+
+		</div>
+
+
+
+	</form>
+
+	<br>
+
+	<footer>
+		<div th:replace="~{base :: rodape}"></div>
+
+	</footer>
+
+
+</body>
+</html>

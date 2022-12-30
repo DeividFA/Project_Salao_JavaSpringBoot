@@ -1,0 +1,62 @@
+package br.com.salao.bellafashion.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.salao.bellafashion.form.CadastroDeAtendimentosForm;
+import br.com.salao.bellafashion.model.Pessoa;
+import br.com.salao.bellafashion.model.Procedimento;
+import br.com.salao.bellafashion.model.padroes.TipoPessoa;
+import br.com.salao.bellafashion.repository.PessoaRepository;
+import br.com.salao.bellafashion.repository.ProcedimentoRepository;
+
+@RestController
+@RequestMapping("atendimento")
+public class AtendimentosController {
+	
+	@Autowired
+	private PessoaRepository pessoaRepository;
+	
+	@Autowired
+	private ProcedimentoRepository procedimentoRepository;
+	
+	
+//	@Autowired
+//	private AtendimentoRepository atendimentoRepository;
+//	
+//	@Autowired
+//	private ValidacaoDeAtendimento validacao;
+//	
+
+	
+	@GetMapping
+	public String  atendimento(CadastroDeAtendimentosForm cadastro, Model model) {
+		
+		List<Procedimento> procedimentos = procedimentoRepository.findAll();
+		
+		//cadastro.setListProcedimentos(procedimentoRepository.findAll());
+		
+
+		
+		model.addAttribute("procedimento", procedimentos);
+		
+		List<Pessoa> colaboradores = pessoaRepository.findByPessoaAndFuncionario();
+		
+		model.addAttribute("funcionario", colaboradores);
+		
+		System.out.println(colaboradores.toString());
+			
+		System.out.println(cadastro.getListProcedimentos());
+		
+		return  "atendimento";
+	}
+
+
+}

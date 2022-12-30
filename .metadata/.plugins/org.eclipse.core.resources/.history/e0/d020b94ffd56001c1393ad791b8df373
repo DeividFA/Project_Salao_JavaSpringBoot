@@ -1,0 +1,20 @@
+<html>
+	<head th:replace="~{base :: head}">
+	<meta charset="UTF-8">
+	     <meta name="viewport" content="width=device-width">
+	</head>
+	<body>
+		<div th:replace="~{base :: logo}">
+		</div>
+						
+	
+	
+	 <footer>
+		   	  <div th:replace="~{base :: rodape}"></div>	
+		   	
+		   	  <p class="copyright">&copy; Copyright Bella Fashion</p>
+		   </footer>
+	
+	
+	</body>
+</html>

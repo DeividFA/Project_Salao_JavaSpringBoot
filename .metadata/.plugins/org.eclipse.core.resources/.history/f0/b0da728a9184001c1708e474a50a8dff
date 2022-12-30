@@ -1,0 +1,114 @@
+package br.com.salao.bellafashion.form;
+
+import java.io.Serializable;
+import java.sql.Blob;
+import java.util.List;
+
+import javax.validation.constraints.NotEmpty;
+
+import br.com.salao.bellafashion.model.Contato;
+import br.com.salao.bellafashion.model.Endereco;
+import br.com.salao.bellafashion.model.Pessoa;
+import br.com.salao.bellafashion.model.padroes.TipoPessoa;
+import ch.qos.logback.core.joran.conditional.ThenAction;
+
+public class CadastroDePessoasForm implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@NotEmpty
+	private String nomePessoa;
+	private List<TipoPessoa> tipoPessoa;
+	private Boolean cliente;
+	private Boolean funcionario;
+	private Boolean fornecedor;
+	private List<Endereco> endereco;
+	private List<Contato> contato;
+	private Blob Observacao;	
+	
+	public String getNomePessoa() {
+		return nomePessoa;
+	}
+	public void setNomePessoa(String nomePessoa) {
+		this.nomePessoa = nomePessoa;
+	}
+	public List<TipoPessoa> getTipoPessoa() {
+		
+		if(getCliente()) {
+			System.out.println(getCliente());
+		this.tipoPessoa.add(TipoPessoa.CLIENTE) ;
+		}
+		if(getFornecedor()) {
+			this.tipoPessoa.add(TipoPessoa.FORNECEDOR) ;
+			}
+		if(getFuncionario()) {
+			this.tipoPessoa.add(TipoPessoa.FUNCIONARIO) ;
+			}
+		
+		return tipoPessoa;
+	}
+	public void setTipoPessoa(List<TipoPessoa> tipoPessoa) {	
+		System.out.println(tipoPessoa);
+		this.tipoPessoa = tipoPessoa;
+	}
+	public List<Endereco> getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(List<Endereco> endereco) {
+		this.endereco = endereco;
+	}
+	public List<Contato> getContato() {
+		return contato;
+	}
+	public void setContato(List<Contato> contato) {
+		this.contato = contato;
+	}
+	public Blob getObservacao() {
+		return Observacao;
+	}
+	public void setObservacao(Blob observacao) {
+		Observacao = observacao;
+	}
+	
+			
+	public Boolean getCliente() {
+		return cliente;
+	}
+	public void setCliente(Boolean cliente) {
+		this.cliente = cliente;
+	}
+	public Boolean getFuncionario() {
+		return funcionario;
+	}
+	public void setFuncionario(Boolean funcionario) {
+		this.funcionario = funcionario;
+	}
+	public Boolean getFornecedor() {
+		return fornecedor;
+	}
+	public void setFornecedor(Boolean fornecedor) {
+		this.fornecedor = fornecedor;
+	}
+	public Pessoa toPessoa () {
+		
+		Pessoa pessoa = new Pessoa();
+		
+		pessoa.setNomePessoa(getNomePessoa());
+		pessoa.setTipoPessoa(getTipoPessoa());
+		pessoa.setContato(getContato());
+		pessoa.setEndereco(getEndereco());
+		pessoa.setObservacao(getObservacao());
+		
+		
+		return pessoa;
+		
+	}
+	
+	
+	
+	
+
+}

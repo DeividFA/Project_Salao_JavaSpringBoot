@@ -1,0 +1,107 @@
+.logo-container {
+	background-color: #FF00FF;
+	color: #000000;
+}
+
+.logo {
+	font-family: 'Handlee', cursive;
+	font-size: 2.3rem;
+}
+
+.copyright{
+	color: #FFFFFF;
+	font-size: 13px;
+	margin: 20px;
+}
+
+footer {
+	text-align: center;
+	padding: 40px 0;
+	background-color: #ff00ff;
+	background: linear-gradient(#ff80ff, #ff00ff);
+}
+
+.mapa {
+	padding: 3em 0;
+	background: linear-gradient(#FEFEFE,#ff80ff);
+
+}
+.mapa-conteudo{
+	width: 940px;
+	margin: 0 auto;
+}
+
+.mapa p {
+	margin: 0 0 2em;
+	text-align: center;
+}
+
+.titulo-principal{
+	text-align: center;
+	font-size: 2em;
+	margin: 0 0 1em;
+	clear: left;
+}
+.titulo-principal:first-letter{
+	font-weight: bold;
+}
+
+.principal{
+	padding: 3em 0;
+	background: #FEFEFE;
+	width: 940px;
+	margin: 0 auto;
+}
+
+.principal p {
+	margin: 0 0 1em;
+
+}
+
+.principal strong{
+	font-weight: bold;
+}
+
+.principal em {
+	font-style: italic;
+}
+
+principal{
+	padding: 3em 0;
+	background: #FEFEFE;
+	width: 940px;
+	margin: 0 auto;
+}
+
+.principal p {
+	margin: 0 0 1em;
+
+}
+
+.principal strong{
+	font-weight: bold;
+}
+
+.principal em {
+	font-style: italic;
+}
+
+.utensilios{
+	width: 120px;
+	float: left;
+	margin: 0 20px 20px 0;
+}
+
+.lefth{
+
+margin-left: -1.25rem !important;
+	
+}
+.mp40{
+	
+	text-align: center;
+    vertical-align: top;
+    margin: 0 1.5%;
+    margin-top: 10px;
+    margin-bottom: 0 1.5%;
+}

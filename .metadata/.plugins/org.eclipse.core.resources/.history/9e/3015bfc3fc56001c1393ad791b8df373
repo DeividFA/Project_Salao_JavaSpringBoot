@@ -1,0 +1,60 @@
+<html>
+	<head th:replace="~{base :: head}">
+	<meta charset="UTF-8">
+	     <meta name="viewport" content="width=device-width">
+	</head>
+	<body>
+		<div th:replace="~{base :: logo}"></div>
+		
+		<div>
+			<div class="container">
+				<section class="principal">
+					<h2 class="titulo-principal">Sobre o Salão Bella Fashion</h2>
+
+						<img class="utensilios" src="imagens/sobre.jpg"
+							alt="Utensilios.">
+						<p>
+							Localizada no coração da cidade a <strong>Bella Fashion</strong>
+							traz para o mercado o que há de melhor para o seu cabelo e unhas.
+							Fundada em 2018, o salão Bella Fashion já é destaque na cidade e
+							conquista novos clientes a cada dia.
+						</p>
+
+						<p id="missao">
+							<em>Nossa missão é: <strong>"Proporcionar auto-estima 
+									e qualidade de vida aos clientes"</strong>.
+							</em>
+						</p>
+
+						<p>Oferecemos profissionais experientes e antenados às mudanças
+							no mundo da moda. O atendimento possui padrão de excelência e
+							agilidade, garantindo qualidade e satisfação dos nossos clientes.</p>
+
+					</section>
+		 </div>
+
+		<section class="mapa">
+			<h3 class="titulo-principal">Nosso estabelecimento</h3>
+			<p>Nosso estabelecimento esta localizado no coração da cidade.</p>
+			<div class="mapa-conteudo">
+				<iframe
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3820.880646350989!2d-43.86937181728243!3d-16.73280604484466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xab5358d6fd4f4f%3A0xaea82ccae56ea119!2sAv.%20Dr.%20Jo%C3%A3o%20Lu%C3%ADs%20de%20Almeida%2C%20308%20-%20Vila%20Guilhermina%2C%20Montes%20Claros%20-%20MG%2C%2039400-466!5e0!3m2!1spt-BR!2sbr!4v1635090529833!5m2!1spt-BR!2sbr" 
+					width="100%" height="250" frameborder="0" style="border:0;" 
+					allowfullscreen="">
+				</iframe>
+			</div>
+
+		</section>
+
+	</div>
+	
+	 <footer>
+		   	  <div th:replace="~{base :: rodape}"></div>	
+		   	
+		   	  <p class="copyright">&copy; Copyright Bella Fashion</p>
+		   	  <p class="copyright">Desenvolvido por Deivid de Freitas Almeida</p>
+		   </footer>
+	
+	
+	</body>
+</html>
